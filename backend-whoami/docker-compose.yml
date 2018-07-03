@@ -4,6 +4,13 @@ services:
   whoami:
     image: 'stefanscherer/whoami'
     restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=whoami"
+      - "traefik.frontend.rule=Host:whoami.example.com"
+      - "traefik.docker.network=reverseproxy_default"
+      - "traefik.port=80"
+      - "traefik.docker.network=proxy"
 
 networks:
   mysql: {}
