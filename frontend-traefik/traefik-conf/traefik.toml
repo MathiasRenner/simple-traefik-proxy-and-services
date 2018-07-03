@@ -1,0 +1,28 @@
+debug = false
+logLevel = "INFO"
+defaultEntryPoints = ["https", "http"]
+[traefikLog]
+[accessLog]
+[web]
+address = ":8080"
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+[retry]
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "docker.localhost"
+watch = true
+exposedbydefault = false
+[acme]
+email = "mail@example.com"
+storage = "acme.json"
+entryPoint = "https"
+OnHostRule = true
+[acme.httpChallenge]
+entryPoint = "http"
