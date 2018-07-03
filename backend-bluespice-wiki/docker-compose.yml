@@ -2,7 +2,7 @@ version: "3.6"
 
 services:
   bluespice:
-    image: 'knsit/bluespice:latest'
+    image: knsit/bluespice:585395d4c47f
     volumes:
       - ./data/config:/config
       - ./data/extensions:/extensions
