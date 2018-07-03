@@ -1,6 +1,7 @@
 # Bluespice wiki
 
-Project URL: https://de.bluespice.com/
+- Project URL: https://de.bluespice.com/
+- Base Docker image: https://github.com/kns-it/Docker-BlueSpice-Wiki
 
 ## How to run
 - Customize the config in file `.env` to your environment. Changing variable `WIKI_URL` to your domain is mandatory, changing others are optional.
