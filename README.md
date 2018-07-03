@@ -17,7 +17,7 @@ Simple example of **docker and traefik as (SSL) proxy** or load balancer **in fr
 - Start traefik: `docker-compose up -d`
 
 ### Start up backend services
-- Go into a folder of the backend services and follow the specific README.
+- Go into a folder of the backend services and follow the specific README. Use the `backend-whoami` as a simple first service.
 
 ## Kudos
 Thanks to [firecyberice](@https://github.com/firecyberice) for the basic idea and [baez90](https://github.com/baez90) for remembering me about this architecture and providing a working example!
