@@ -4,14 +4,15 @@ services:
   whoami:
     image: 'stefanscherer/whoami'
     restart: always
+    networks:
+      - proxy
     labels:
       - "traefik.enable=true"
       - "traefik.backend=whoami"
       - "traefik.frontend.rule=Host:whoami.example.com"
-      - "traefik.port=80"
+      - "traefik.port=8080"
       - "traefik.docker.network=proxy"
 
 networks:
-  mysql: {}
-    proxy:
-      external: true
+  proxy:
+    external: true
