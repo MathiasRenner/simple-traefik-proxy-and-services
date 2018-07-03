@@ -1,0 +1,50 @@
+version: "3.6"
+
+services:
+  bluespice:
+    image: 'knsit/bluespice:latest'
+    volumes:
+      - ./data/config:/config
+      - ./data/extensions:/extensions
+      - ./data/web-data:/data
+    networks:
+      - proxy
+      - mysql
+    environment:
+      - "WIKI_URL=https://${WIKI_URL}"
+      - "WIKI_NAME=${WIKI_NAME}"
+      - "DB_USER=${DB_USER}"
+      - "DB_PASS=${DB_PASS}"
+      - "DB_NAME=${DB_NAME}"
+      - "DB_SERVER=mysql"
+      - "ADMIN_LOGIN=${ADMIN_LOGIN}"
+      - "ADMIN_PASS=${ADMIN_PASS}"
+    labels:
+      - "traefik.backend=bluespice"
+      - "traefik.frontend.rule=Host:${WIKI_URL}"
+      - "traefik.port=80"
+      - "traefik.docker.network=proxy"
+      - "traefik.enable=true"
+    restart: always
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./data/db-data/:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASS}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASS}
+    ports:
+      - 3306:3306
+    networks:
+      - mysql
+    restart: always
+
+networks:
+  mysql: {}
+  proxy:
+    external: true
