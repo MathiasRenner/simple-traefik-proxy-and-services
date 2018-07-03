@@ -39,7 +39,7 @@ Simple example of **docker and traefik as SSL proxy** with auto-redirect from ht
 - Go into a folder of the backend services and follow the specific README. The service `backend-whoami` is a simple first service to start with.
 
 ## Kudos
-Thanks to [firecyberice](https://github.com/firecyberice) for the basic architectural idea of this deployment and [baez90](https://github.com/baez90) for remembering me about this architecture and providing a working example!
+Thanks to [firecyberice](https://github.com/firecyberice) for the basic architectural idea of this deployment and [baez90](https://github.com/baez90) for reminding me about this architecture and providing a working example!
 
 ## Support this project
 
