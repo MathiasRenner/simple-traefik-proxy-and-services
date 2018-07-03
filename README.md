@@ -14,15 +14,15 @@ Simple example of **docker and traefik as SSL proxy** with auto-redirect from ht
 
   ```git clone https://github.com/bitleaf/simple-traefik-proxy-and-services.git```
 
-- Go into folder 
-  
-  ```frontend-traefik`: `cd frontend-traefik```
+- Go into folder `frontend-traefik`: 
 
-- Create `acme.json` to persist SSL certificate data and set correct permissions: 
+  ```cd frontend-traefik```
+
+- Create empty file `acme.json` to store SSL certificate data and set correct permissions: 
  
   ```touch traefik-conf/acme.json && chmod 600 traefik-conf/acme.json```
 
-- Customize config file `traefik-conf/traefik.toml` to your environment. Change `domain` and `email`.#
+- Customize the config file `traefik-conf/traefik.toml` to your environment. Change `domain` and `email`.
 
 - Create docker network for the proxy: 
 
@@ -32,7 +32,7 @@ Simple example of **docker and traefik as SSL proxy** with auto-redirect from ht
 
   ```docker-compose up -d```
 
-- Now continue startup up at least one backend service. Then, traefik can automatically setup SSL.
+- Now continue with starting up at least one backend service. Then, traefik can automatically issue a valid SSL certificate from [Let's encrypt](https://letsencrypt.org/).
 
 
 ### Start up backend services
