@@ -1,0 +1,11 @@
+version: "3.6"
+
+services:
+  whoami:
+    image: 'stefanscherer/whoami'
+    restart: always
+
+networks:
+  mysql: {}
+    proxy:
+      external: true
