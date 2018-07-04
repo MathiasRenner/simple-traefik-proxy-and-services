@@ -1,0 +1,36 @@
+version: '3.6'
+
+services:
+
+  wordpress:
+    image: wordpress:4.9.6
+    environment:
+      WORDPRESS_DB_PASSWORD: 
+    restart: always
+    networks:
+      - proxy
+      - wordpress-db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=blog"
+      - "traefik.frontend.rule=Host:blog.${DOMAIN}"
+      - "traefik.port=80"
+      - "traefik.docker.network=proxy"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - ./data/db-data/:/var/lib/mysql
+    networks:
+      - wordpress-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 
+
+networks:
+  wordpress-db: {}
+  proxy:
+    external: true
+
