@@ -1,5 +1,6 @@
 # Traefik reverse proxy with backend services
-Simple example of **[docker](https://www.docker.com/) and [traefik](https://traefik.io/) as automatic SSL proxy** with auto-redirect from http to https **in front of a flexible infrastructure of backend services**, like this one:
+
+Easy to use tutorial how to use **[docker](https://www.docker.com/) and [traefik](https://traefik.io/) as automatic SSL proxy** with auto-redirect from http to https **in front of a flexible infrastructure of backend services**, like this one:
 
 
 ![Architecture](https://raw.githubusercontent.com/containous/traefik/master/docs/img/architecture.png)
