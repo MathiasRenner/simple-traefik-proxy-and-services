@@ -1,0 +1,23 @@
+version: '3.6'
+
+services:
+  portainer:
+    image: portainer/portainer
+    command: -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/data
+    restart: always
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=portainer"
+      - "traefik.frontend.rule=Host:portainer.${DOMAIN}"
+      - "traefik.port=9000"
+      - "traefik.docker.network=proxy"
+
+networks:
+  proxy:
+    external: true
+
