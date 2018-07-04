@@ -2,18 +2,18 @@ version: '3.6'
 
 services:
   traefik:
-    image: traefik:latest
+    image: traefik:1.6.4
     restart: always
     ports:
       - 80:80
       - 443:443
-#      - 8080:8080
+#      - 8080:8080 # Delete comment to activate traefik's dashboard at port 8080
     networks:
-      - proxy
+      - proxy # Network "proxy" is used for the proxy and all services traefik forwards traffic to
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./traefik-conf/traefik.toml:/traefik.toml
-      - ./traefik-conf/acme.json:/acme.json
+      - /var/run/docker.sock:/var/run/docker.sock # Docker socket required e.g. for service discovery
+      - ./traefik-conf/traefik.toml:/traefik.toml # Config file of traefik
+      - ./traefik-conf/acme.json:/acme.json # SSL certs are persistently stored here
 
 networks:
   proxy:
