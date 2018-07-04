@@ -1,4 +1,4 @@
-# Traefik proxy with backend services
+# Traefik reverse proxy with backend services
 Simple example of **docker and traefik as SSL proxy** with auto-redirect from http to https **in front of a flexible infrastructure of backend services**, like this one:
 
 
