@@ -35,7 +35,7 @@ This project uses **[docker](https://www.docker.com/) and [traefik](https://trae
 
 
 ### Step 2/2: Start up backend services
-- Go into a folder of the backend services and follow the specific README. The service `backend-whoami` is a simple first service to start with.
+- Go into a folder of the backend services and follow the specific README. The service [backend-whoami](https://github.com/bitleaf/simple-traefik-proxy-and-services/tree/master/backend-whoami) is a simple first service to start with.
 
 ## Kudos
 Thanks to [firecyberice](https://github.com/firecyberice) for the basic architectural idea of this deployment and [baez90](https://github.com/baez90) for reminding me about this architecture and providing a working example!
