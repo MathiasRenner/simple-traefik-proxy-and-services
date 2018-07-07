@@ -5,7 +5,7 @@ services:
   wordpress:
     image: wordpress:4.9.6
     environment:
-      WORDPRESS_DB_PASSWORD: 
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
     restart: always
     networks:
       - proxy
@@ -27,7 +27,7 @@ services:
     networks:
       - wordpress-db
     environment:
-      MYSQL_ROOT_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD} 
 
 networks:
   wordpress-db: {}
