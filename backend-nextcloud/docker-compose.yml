@@ -1,0 +1,43 @@
+version: '2'
+
+volumes:
+  nextcloud:
+  db:
+
+services:
+  app:
+    image: nextcloud:15.0.2
+    networks:
+      - proxy
+      - nextcloud-db
+    links:
+      - db
+    volumes:
+      - ./data/nextcloud-data/:/var/www/html
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=cloud"
+      - "traefik.frontend.rule=Host:cloud."
+      - "traefik.port=80"
+      - "traefik.docker.network=proxy"
+    depends_on:
+      - db
+
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - ./data/db-data/:/var/lib/mysql
+    networks:
+      - nextcloud-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+networks:
+  nextcloud-db: {}
+  proxy:
+    external: true
