@@ -3,7 +3,7 @@ version: '2'
 services:
   
   app:
-    image: rocketchat/rocket.chat:latest
+    image: rocketchat/rocket.chat:0.74.2
     restart: unless-stopped
     volumes:
       - ./data/app/uploads:/app/uploads
