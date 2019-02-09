@@ -2,7 +2,7 @@
 
 Get your own services running - within just a few minutes and with automatic SSL.
 
-This project uses **[docker](https://www.docker.com/) and [traefik](https://traefik.io/) as automatic SSL proxy** with auto-redirect from http to https **in front of a flexible infrastructure of backend services**, like this one:
+This project uses **[Docker](https://www.docker.com/) and [traefik](https://traefik.io/) as automatic SSL proxy** with auto-redirect from http to https **in front of a flexible infrastructure of backend services**, like this one:
 
 ![Architecture](https://raw.githubusercontent.com/containous/traefik/master/docs/img/architecture.png)
 
@@ -13,11 +13,11 @@ This project uses **[docker](https://www.docker.com/) and [traefik](https://trae
 - **Software:** `docker`, `docker-Compose` and `git` (all latest) must be installed.
 
 ### Step 1/2: Start up frontend proxy
-- Clone this repo:
+- Clone this repo by running:
 
   ```git clone https://github.com/bitleaf/simple-traefik-proxy-and-services.git```
 
-- Go into folder `frontend-traefik`, create empty file `acme.json` to store SSL certificate data, and set correct permissions:  
+- Go into folder `frontend-traefik`, create empty file `acme.json` as store for SSL certificate data, and set correct permissions by running:  
 
   ```cd frontend-traefik && touch traefik-conf/acme.json && chmod 600 traefik-conf/acme.json```
 
@@ -31,14 +31,14 @@ This project uses **[docker](https://www.docker.com/) and [traefik](https://trae
 
   ```docker-compose up -d```
 
-- Now continue with starting up at least one backend service. Then, traefik can automatically issue a valid SSL certificate from [Let's encrypt](https://letsencrypt.org/). If you run on localhost, traefik will issue a self-signed cert. In that case, some browsers will ask you to accept this self-signed cert before you can access the services.
+- Now continue with starting up at least one backend service in next section "Step 2/2". Don't worry about SSL. Traefik will automatically issue a valid SSL certificate from [Let's encrypt](https://letsencrypt.org/). If you run on localhost, traefik will issue a self-signed cert. In that case, some browsers will ask you to accept this self-signed cert before you can access the services.
 
 
 ### Step 2/2: Start up backend services
 - Go into a folder of the backend services and follow the specific README. The service [backend-whoami](https://github.com/bitleaf/simple-traefik-proxy-and-services/tree/master/backend-whoami) is a simple first service to start with.
 
 ## Kudos
-Thanks to [firecyberice](https://github.com/firecyberice) for the basic architectural idea of this deployment and [baez90](https://github.com/baez90) for reminding me about this architecture and providing a working example!
+Thanks to [firecyberice](https://github.com/firecyberice) for the basic architectural idea of this deployment and [baez90](https://github.com/baez90) for providing a working example!
 
 ## Support this project
 

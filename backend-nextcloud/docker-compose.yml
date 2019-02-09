@@ -6,7 +6,7 @@ volumes:
 
 services:
   app:
-    image: nextcloud:15.0.2
+    image: nextcloud:14.0.6
     networks:
       - proxy
       - nextcloud-db
