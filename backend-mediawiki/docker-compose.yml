@@ -1,0 +1,45 @@
+version: '2'
+
+volumes:
+  wiki:
+  db:
+
+services:
+  app:
+    image: mediawiki:1.32.0
+    networks:
+      - proxy
+      - wiki-db
+    links:
+      - db
+    volumes:
+      - ./data/wiki-data/images:/var/www/html/images
+      - ./data/config/LocalSettings.php:/var/www/html/LocalSettings.php
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=cloud"
+      - "traefik.frontend.rule=Host:cloud."
+      - "traefik.port=8080"
+      - "traefik.docker.network=proxy"
+    depends_on:
+      - db
+
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - ./data/db-data/:/var/lib/mysql
+    networks:
+      - wiki-db
+    environment:
+      - MYSQL_PASSWORD=${DB_USER_PW}
+      - MYSQL_RANDOM_ROOT_PASSWORD='yes'
+      - MYSQL_DATABASE=my_wiki
+      - MYSQL_USER=${DB_USER_PW}
+
+
+networks:
+  wiki-db: {}
+  proxy:
+    external: true
