@@ -27,7 +27,7 @@ services:
       - chat-db
 
   db:
-    image: mongo:3.2
+    image: mongo:3.4
     restart: unless-stopped
     volumes:
      - ./data/db:/data/db
