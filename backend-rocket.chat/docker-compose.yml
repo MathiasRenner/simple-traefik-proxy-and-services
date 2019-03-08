@@ -41,7 +41,7 @@ services:
   # this container's job is just run the command to initialize the replica set.
   # it will run the command and remove himself (it will not stay running)
   db-init:
-    image: mongo:3.2
+    image: mongo:3.4
     command: 'mongo db/rocketchat --eval "rs.initiate({ _id: ''rs0'', members: [ { _id: 0, host: ''localhost:27017'' } ]})"'
     depends_on:
       - db
