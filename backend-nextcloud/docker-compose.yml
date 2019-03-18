@@ -18,7 +18,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.backend=cloud"
-      - "traefik.frontend.rule=Host:cloud."
+      - "traefik.frontend.rule=Host:cloud.${DOMAIN}"
       - "traefik.port=80"
       - "traefik.docker.network=proxy"
     depends_on:
@@ -32,8 +32,8 @@ services:
     networks:
       - nextcloud-db
     environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_PASSWORD=
+      - MYSQL_ROOT_PASSWORD=${DB_USER_PW}
+      - MYSQL_PASSWORD=${DB_ROOT_PW}
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
 
