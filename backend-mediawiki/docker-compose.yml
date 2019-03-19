@@ -5,7 +5,7 @@ volumes:
   db:
 
 services:
-  app:
+  wiki:
     image: mediawiki:1.32.0
     networks:
       - proxy
@@ -14,7 +14,7 @@ services:
       - db
     volumes:
       - ./data/wiki-data/images:/var/www/html/images
-      - ./data/config/LocalSettings.php:/var/www/html/LocalSettings.php
+#      - ./data/wiki-config/LocalSettings.php:/var/www/html/LocalSettings.php
     restart: always
     labels:
       - "traefik.enable=true"
