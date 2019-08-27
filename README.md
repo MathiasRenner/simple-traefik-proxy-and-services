@@ -4,7 +4,7 @@ Get your own services running - within just a few minutes and with automatic SSL
 
 This project uses **[Docker](https://www.docker.com/) and [traefik](https://traefik.io/) as automatic SSL proxy** with auto-redirect from http to https **in front of a flexible infrastructure of backend services**, like this one:
 
-![Architecture](https://raw.githubusercontent.com/containous/traefik/master/docs/img/architecture.png)
+![Architecture](https://d33wubrfki0l68.cloudfront.net/7c5fd7d38c371e23cdff059e6cebb10292cd441c/7d420/assets/img/traefik-architecture.svg)
 
 ## How to use
 
